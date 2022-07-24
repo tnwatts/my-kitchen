@@ -4,7 +4,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    res.render('recipes/index',);
+    res.render('recipes/index', );
 }
 
 function newRecipe(req, res) {

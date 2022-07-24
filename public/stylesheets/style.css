@@ -1,1 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" );
+
+.dark-text {
+	color: black;
+	text-shadow: 5px 5px 2px rgba(255, 255, 255, 0.755);
+}
