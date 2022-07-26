@@ -1,3 +1,74 @@
 <%- include('../partials/header') %>
-<h1>RECIPES NEW</h1>
+<body class="container vh-100 text-center text-bg-dark rounded-4" style= "background: url('https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container invis-holder">
+    
+    <div class="container recipe-form rounded-4">
+        <div class="row">
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label" id="diet">Diet Type</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3 col">
+                
+                <!-- <div class="input-group mb-3"> -->
+                    <input list="datalistOptions"  class="form-control" placeholder="Ingredients" aria-label="  " aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    <!-- <label for="exampleDataList" class="form-label">Ingredients</label> -->
+                  <!-- </div> -->
+                  
+               
+                <!-- <label for="exampleDataList" class="form-label">Ingredients</label>
+                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>                                                 -->
+                <datalist id="datalistOptions">
+                <option value="Flour">
+                <option value="Yeast">
+                <option value="Apples">
+                <option value="Steak">
+                <option value="Jack Cheese">
+                <option value="Apples">
+                <option value="Steak">
+                <option value="Jack Cheese">
+                <option value="Apples">
+                <option value="Steak">
+                <option value="Jack Cheese">
+                <option value="Apples">
+                <option value="Steak">
+                <option value="Jack Cheese">
+                </datalist>
+                
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label">Quantity Type</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label" id="diet">Quantity</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+        <div class="row text-holder">
+            <label class="form-label">Directions</label>
+            
+            <textarea class="form-control" rows="8" name = "description">
+                Enter details here...
+            </textarea>
+        </div>
+        
+    </div>
+        
+</div>
+</body>
+
+
+
 <%- include('../partials/footer') %>
