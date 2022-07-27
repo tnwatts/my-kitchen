@@ -14,26 +14,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-group mb-3 col">
-                <input list="datalistOptions"  class="form-control" placeholder="Ingredients" aria-label="  " aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-                <datalist id="datalistOptions">
-                <option value="Flour">
-                <option value="Yeast">
-                <option value="Apples">
-                <option value="Steak">
-                <option value="Jack Cheese">
-                <option value="Apples">
-                <option value="Steak">
-                <option value="Jack Cheese">
-                <option value="Apples">
-                <option value="Steak">
-                <option value="Jack Cheese">
-                <option value="Apples">
-                <option value="Steak">
-                <option value="Jack Cheese">
-                </datalist>
-            </div>
+            <form action="/userIngredients" id="selectIng" method="post" class="">
+                <div class="input-group mb-3">
+                  <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
+                    <% ingredients.forEach(function(i, idx) { %>
+                    <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
+                    <% }); %>
+                  </select>
+                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+                </div>
+              </form>
             <div class="col">
                 <label for="exampleInputEmail1" class="form-label">Quantity Type</label>
                 <input type="text" class="form-control" id="name">

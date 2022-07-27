@@ -1,5 +1,37 @@
 <%- include('../partials/header') %>
-<div class="container">
-    <h1>RECIPES LIST</h1>
-</div>
+
+<div class="container text-light rounded-4 lifted i-table">
+    <h2 class="dark-text rounded-4">Recipes</h2>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Create New Recipe
+    </button>
+    <div class="table-responsive" max-width="50">
+      <table class="table table-striped dark-text table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity Type</th>
+            <th scope="col">Quantity Amount</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  recipes.forEach(function(r) { %>
+          <tr>
+            <td><%= r.name %></td>
+            <td><%= r.diet %></td>
+            <td><%= r.preparationTime %></td>
+            
+            <td>
+              <form action="/recipes/<%=  r._id %>" method="GET" class="">
+                <button class="btn" type="submit" id="">Details</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
 <%- include('../partials/footer') %>
