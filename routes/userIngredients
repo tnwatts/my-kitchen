@@ -5,5 +5,5 @@ const userIngredientsCtrl = require('../controllers/userIngredients');
 
 router.put('/ingredients:id', userIngredientsCtrl.update);
 router.post('/ingredients/:id/userIngredients', userIngredientsCtrl.create);
-router.delete('/ingredients/:id', userIngredientsCtrl.delete);
+router.delete('/userIngredients/:id', userIngredientsCtrl.delete);
 module.exports = router;

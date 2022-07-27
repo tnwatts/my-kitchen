@@ -21,7 +21,6 @@ async function deleteIngredient(req, res, next) {
     try {
       const ingredient = await Ingredient.findOne({'users._id': req.params.id, 'users.userId': req.user._id});
       if (!ingredient) throw new Error('Nice Try!');
-      // Remove the using the remove method on Mongoose arrays
       ingredient.users.remove(req.params.id);
       await ingredient.save();
       res.redirect(`/ingredients`);
