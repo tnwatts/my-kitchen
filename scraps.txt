@@ -13,3 +13,7 @@
     {users:{$elemMatch:{_id : ObjectId('62dff9d7a97d232736167dc8')}}}
 
     db.inventory.find( { status: "A" }, { item: 1, status: 1, instock: { $slice: -1 } } )
+
+    <%- yourDocument.notes.replaceAll('\n', '<br>') %>    //
+
+    <option value="<%= i._id %>"><%= i.users.find(u => u.id).qty %></option>

@@ -27,6 +27,26 @@ async function deleteIngredient(req, res, next) {
     } catch (err) {
       return next(err);
     }
-  }
-  function update(req, res){
+ }
+
+
+ function update(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  Ingredient.findOne({'users._id': req.params.id}, function(err, ingredient) {
+    // Find the comment subdoc using the id method on Mongoose arrays
+    // https://mongoosejs.com/docs/subdocs.html
+    const userIngredient = ingredient.users.id(req.params.id);
+    console.log(userIngredient);
+    console.log(req.user._id)
+    // Ensure that the comment was created by the logged in user
+    if (!userIngredient.userId.equals(req.user._id)) return res.redirect(`/ingredients`);
+    // Update the text of the comment
+    userIngredient.qty = req.body.qty;
+    // Save the updated book
+    ingredient.save(function(err) {
+      // Redirect back to the book's show view
+      res.redirect(`/ingredients`);
+    });
+  });
 }
+

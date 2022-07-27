@@ -65,22 +65,29 @@
           <tr>
             <td><%= i.name %></td>
             <td><%= i.quantityType %></td>
-            <td><%= i.users.find(u => u.id).qty %></td>
-            <td>update</td>
             <td>
-              <form action="/userIngredients/<%=  i.users.find(u => u.id)._id %>?_method=DELETE" id="selectIng" method="POST" class="">
+              <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="">
+                <div class="input-group mb-1">
+                  <input name="qty" class="form-control form-control-sm" type="number" placeholder="<%= i.users.find(u => u.id).qty %>" aria-describedby="button-addon2">
+                </input>
+                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Update</button>
+                </div>
+              </form>
+            </td>
+            <td>
+              <form action="/userIngredients/<%=  i.users.find(u => u.id)._id %>?_method=DELETE" id=""
+                method="POST" class="">
                 <button class="btn" type="submit" id="">Delete</button>
               </form>
             </td>
           </tr>
           <% }) %>
-         
+
         </tbody>
       </table>
       <form action="/userIngredients" id="selectIng" method="post" class="">
         <div class="input-group mb-3">
-          <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2"
-            onchange="changeAction(this.value)">
+          <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
             <% ingredients.forEach(function(i, idx) { %>
             <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
             <% }); %>

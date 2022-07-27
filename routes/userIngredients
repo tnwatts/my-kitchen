@@ -3,7 +3,7 @@ var router = express.Router();
 const userIngredientsCtrl = require('../controllers/userIngredients');
 /* GET users listing. */
 
-router.put('/ingredients:id', userIngredientsCtrl.update);
+router.put('/userIngredients/:id', userIngredientsCtrl.update);
 router.post('/ingredients/:id/userIngredients', userIngredientsCtrl.create);
 router.delete('/userIngredients/:id', userIngredientsCtrl.delete);
 module.exports = router;
