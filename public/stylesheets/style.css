@@ -45,3 +45,21 @@
 .text-holder {
 	padding: 7%
 }
+
+.partials {
+	margin: 5px;
+	background-color:rgba(255, 255, 255, 0.84);
+}
+
+.lifted {
+	border-radius: 10px;
+	box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.544);
+}
+td {
+	width: 20%;
+}
+
+.i-table{
+	margin-top: 5%;
+	background-color: #d5c4a6f5;
+}
