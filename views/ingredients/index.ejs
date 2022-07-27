@@ -85,9 +85,10 @@
 
         </tbody>
       </table>
-      <form action="/userIngredients" id="selectIng" method="post" class="">
+      <form action="" id="selectIng" method="post" class="">
         <div class="input-group mb-3">
           <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
+            <option selected>Select Ingredients</option>
             <% ingredients.forEach(function(i, idx) { %>
             <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
             <% }); %>
