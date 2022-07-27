@@ -9,3 +9,7 @@
         <a>what</a>
 
     </nav>
+
+    {users:{$elemMatch:{_id : ObjectId('62dff9d7a97d232736167dc8')}}}
+
+    db.inventory.find( { status: "A" }, { item: 1, status: 1, instock: { $slice: -1 } } )

@@ -1,13 +1,16 @@
 <%- include('../partials/header') %>
+<script>
+  function changeAction(val) {
+    console.log("IS THIS RUNNING");
+    // let newAction = this.value;
+    document.getElementById('selectIng').action = `/ingredients/${val}/userIngredients`;
+  };
+</script>
 
-<body class="container vh-100 text-center text-bg-dark" style= "background: url('https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80'); background-repeat: no-repeat; background-size: cover;"">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
-        crossorigin="anonymous"></script> -->
-<!-- Button trigger modal -->
+<body class="container vh-100 text-center text-bg-dark"
+  style="background: url('https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80'); background-repeat: no-repeat; background-size: cover;"">
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class=" modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,64 +20,89 @@
       <div class="modal-body">
         <form action="/ingredients" method="post" class="">
           <div class="form-floating mb-3 dark-text">
-            <input type="text" class="form-control rounded-3" name="name" id="floatingInput" >
+            <input type="text" class="form-control rounded-3" name="name" id="floatingInput">
             <label for="floatingInput">Ingredient Name</label>
           </div>
           <div class="form-floating mb-3 dark-text">
-            <input type="text" class="form-control rounded-3" name="quantityType" id="floatingInput" >
             <label for="floatingInput">Quantity Type</label>
+            <select name="quantityType" class="rounded-3" name="quantityType" id="floatingInput">
+              <option value='oz'>oz</option>
+              <option value='grams'>gram</option>
+              <option value='count'>count</option>
+              <option value='liter'>liter</option>
+              <option value='cups'>cups</option>
+              <option value='quart'>quart</option>
+              <option value='gallon'>gallon</option>
+            </select>
           </div>
           <input type="submit" value="Add Ingredient">
-         
+
         </form>
       </div>
       <div class="modal-footer rounded-4">
       </div>
     </div>
   </div>
-</div>
+  </div>
 
-<div class="container text-light rounded-4" style="background-color: #dcceb6e0;">
+  <div class="container text-light rounded-4" style="background-color: #dcceb6e0;">
     <h2 class="dark-text rounded-4">My Ingredients</h2>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Submit New Ingredient
     </button>
-      <div class="table-responsive" max-width="50">
-        <table class="table table-striped dark-text table-sm">
-          <thead>
-            <tr>
-              <!-- <th scope="col">#</th> -->
-              <th scope="col">Name</th>
-              <th scope="col">Quantity Type</th>
-              <th scope="col">Quantity Amount</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>update</td>
-              <td>delete</td>
-            </tr>
-            <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-          </tbody>
-        </table>
-      </div>
-</div>
+    <div class="table-responsive" max-width="50">
+      <table class="table table-striped dark-text table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity Type</th>
+            <th scope="col">Quantity Amount</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  userIngredients.forEach(function(i) { %>
+          <tr>
+            <td><%= i.name %></td>
+            <td><%= i.quantityType %></td>
+            <td><%= i.users.find(u => u.id).qty %></td>
+            <td>update</td>
+            <td>
+              <form action="/userIngredients/<%=  i.users.find(u => u.id)._id %>" id="selectIng" method="delete" class="">
+                <button class="btn" type="submit" id="">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+          <tr>
+            <td>1,001</td>
+            <td>random</td>
+            <td>data</td>
+            <td>placeholder</td>
+            <td>text</td>
+          </tr>
+          <tr>
+            <td>1,001</td>
+            <td>random</td>
+            <td>data</td>
+            <td>placeholder</td>
+            <td>text</td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="/userIngredients" id="selectIng" method="post" class="">
+        <div class="input-group mb-3">
+          <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2"
+            onchange="changeAction(this.value)">
+            <% ingredients.forEach(function(i, idx) { %>
+            <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
+            <% }); %>
+          </select>
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+
 <%- include('../partials/footer') %>

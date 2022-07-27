@@ -10,9 +10,10 @@ require('dotenv').config();
 require('./config/database');
 require('./config/passport');
 
-var indexRouter = require('./routes/index');
-var ingredientsRouter = require('./routes/ingredients');
-var recipesRouter = require('./routes/recipes');
+const indexRouter = require('./routes/index');
+const ingredientsRouter = require('./routes/ingredients');
+const recipesRouter = require('./routes/recipes');
+const userIngredientsRouter = require('./routes/userIngredients');
 
 var app = express();
 
@@ -44,8 +45,9 @@ app.use(function(req, res, next) {
 const isLoggedIn = require('./config/auth');
 
 app.use('/', indexRouter);
-app.use('/', ingredientsRouter);
-app.use('/', recipesRouter);
+app.use('/', isLoggedIn, ingredientsRouter);
+app.use('/', isLoggedIn, recipesRouter);
+app.use('/', isLoggedIn, userIngredientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
