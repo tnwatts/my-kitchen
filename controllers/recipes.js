@@ -62,7 +62,7 @@ function updateIngredients(req, res) {
 
         if (req.body.addIngredient) recipe.ingredients.push(req.body.addIngredient);
         recipe.save(function(err) {
-          res.redirect(`/recipes`);
+          res.redirect(`/recipes/${recipe._id}/edit`);
         });
       });
 }

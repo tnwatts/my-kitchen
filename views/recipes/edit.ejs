@@ -14,8 +14,15 @@
             </form>
         </div>
         <div class="row">
-            <div class="container-fluid"><% recipe.ingredients.forEach(function(i){ %>
-                <%= i + ", " %> 
+            <div class="container-fluid">
+                <% recipe.ingredients.forEach(function(i, idx){ %>
+                    <% if (idx%2 == 0) { %>
+
+                        <div class="col">
+                            <%= i + ", " %> <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                            <% if (i.length+1) %> <%= (recipe.ingredients[idx+1]) + ", " %> <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                        </div>
+                    <% } %>
             <% }) %>
             </div>
         </div>
