@@ -51,8 +51,9 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Quantity Type</th>
-                        <th scope="col">Quantity Amount</th>
+                        <th scope="col">Diet</th>
+                        <th scope="col">Preparation Time</th>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -66,6 +67,11 @@
                         <td>
                             <form action="/recipes/<%=  r._id %>" method="GET" class="">
                                 <button class="btn" type="submit" id="">Details</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/recipes/<%=  r._id %>/edit" method="GET" class="">
+                                <button class="btn" type="submit" id="">Edit</button>
                             </form>
                         </td>
                     </tr>

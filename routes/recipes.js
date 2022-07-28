@@ -4,10 +4,13 @@ const recipesCtrl = require('../controllers/recipes');
 
 
 router.get('/recipes', recipesCtrl.index);
-router.post('/recipes', recipesCtrl.new);
-// router.get('/recipes/:id/edit', recipesCtrl.edit);
+router.post('/recipes', recipesCtrl.create);
+router.get('/recipes/:id', recipesCtrl.show);
+router.put('/recipes/:id', recipesCtrl.update);
+router.put('/recipes/:id/updateIng', recipesCtrl.updateIngredients);
+router.get('/recipes/:id/edit', recipesCtrl.edit);
 
-// router.get('/recipes/:id/new', recipesCtrl.new)
+// router.get('/recipes/:id/nw', recipesCtrl.new)
 
 
 module.exports = router;
