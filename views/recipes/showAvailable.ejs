@@ -1,0 +1,41 @@
+
+<%- include('../partials/header') %>
+<body class="container vh-100 text-center text-bg-dark px-4"
+    style="background: url('https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80'); background-repeat: no-repeat; background-size: cover;"">
+
+<div class="container text-light rounded-4 lifted i-table mt-5 px-5 py-2">
+
+<div class="col-sm-3 lifted light-background dark-text rounded-3 border border-outline-secondary mx-auto py-3 my-3 mb-5">
+    Look at all the DELICIOUS STUFF you can eat!
+</div>
+
+<div class="table-responsive" max-width="50">
+    <table class="table table-striped dark-text table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Diet</th>
+                <th scope="col">Preparation Time</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%  availableRec.forEach(function(r) { %>
+            <tr>
+                <td><%= r.name %></td>
+                <td><%= r.diet %></td>
+                <td><%= r.preparationTime %></td>
+
+                <td>
+                    <form action="/recipes/<%=  r._id %>" method="GET" class="">
+                        <button class="btn btn-outline-warning dark-background light-text lifted" type="submit" id="">View</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+<%- include('../partials/footer') %>

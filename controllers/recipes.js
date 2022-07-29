@@ -41,13 +41,17 @@ function edit(req, res) {
 function update(req, res) {
     Recipe.findOne({'_id': req.params.id, 'users': req.user._id}, function(err, recipe){
         if (!recipe.user.equals(req.user._id)) return res.redirect(`/ingredients`);
-        recipe.ingredients.forEach(i => {
-            
-        });
+       console.log(req.body, " FIRST");
+       for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+      }
         recipe.ingredients.forEach(function(i, idx){
+            console.log(req.body[i], "BEFORE CHECK");
             if (req.body[i]) return;
-            recipe.ingredients.splice(idx, 1);
+            
+            console.log(recipe.ingredients.splice(idx, 1), "AFTER CHECK");
         })
+        console.log(req.body);
         recipe.directions = req.body.directions;
         recipe.preparationTime = req.body.preparationTime;
         recipe.name = req.body.name;
@@ -87,31 +91,31 @@ function show(req, res) {
 
 async function available(req, res, next) {
     try {
-        console.log("I MADE IT TO THE CONTROLLER")
         let availableRec = [];
         storeIngArr = [];
         const userIngredients = await Ingredient.find( {users:{$elemMatch:{userId : req.user._id}}})
         if(!userIngredients) throw new Error("uhoh");
-        console.log("I FOUND ALL THE INGREDIENTS", userIngredients);
         const recipes = await Recipe.find({});
-        console.log("I FOUND ALL THE RECIPES", recipes);
         let ingredientsNames = [];
         userIngredients.forEach(function(i){   //create array of strings for comparison 
             ingredientsNames.push(i.name);
         })
-        console.log("I MADE AN ARRAY OF INGREDIENTS NAMES", ingredientsNames);
-        recipes.forEach(function(r, idx){
-            r.forEach(function(i){
-                storeIngArr[idx].push(i);
-            })
+        await recipes.forEach(function(r, idx){
+            storeIngArr.push(r.ingredients);
         })
-        console.log("I MADE A LIST OF ingredients arrays", storeIngArr)
-        recipes.forEach(function(r, idx){
-            const containsAll = ingredientsNames.every(element => {
-                return r.ingredients.includes(element);
+        // console.log("I MADE A LIST OF RECIPE ingredients arrays", storeIngArr)
+        // console.log("I MADE A LIST OF USER ingredients arrays", ingredientsNames)
+        await recipes.forEach(function(r, idx){
+            const containsAll = r.ingredients.every(element => {
+                // console.log(element);
+                return ingredientsNames.includes(element);
             })
-            if (containsAll) availableRec.push(r);
+            if (containsAll) {
+                availableRec.push(r);
+            }
+
         });
+        console.log(availableRec);
         if (availableRec.length > 0) {
             console.log("I AM DOING THE IF THING");
             res.render('recipes/showAvailable', {availableRec});
@@ -124,16 +128,3 @@ async function available(req, res, next) {
     }
 }
 
-
-
-async function deleteIngredient(req, res, next) {
-    try {
-      const ingredient = await Ingredient.findOne({'users._id': req.params.id, 'users.userId': req.user._id});
-      if (!ingredient) throw new Error('Nice Try!');
-      ingredient.users.remove(req.params.id);
-      await ingredient.save();
-      res.redirect(`/ingredients`);
-    } catch (err) {
-      return next(err);
-    }
-}

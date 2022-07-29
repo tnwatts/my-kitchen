@@ -19,6 +19,9 @@
 .small-text{
 	font-size: 2vmin;
 }
+.tiny-text {
+	font-size: 1.5vmin;
+}
 
 .title {
 	margin: 2vmin;
