@@ -1,69 +1,103 @@
 <%- include('../partials/header') %>
-<body class="container vh-100 text-center text-bg-dark">
-    <div class="container invis-holder row">
-    <div class="col rounded-3 recipe-form">
-        <label for="" class="">Ingredients</label>
-        <div class="row">
-            <form action="/recipes/<%= recipe._id %>/updateIng/?_method=PUT" id="recipeIng" method="POST" class="input-group">
-                <select class="form-select" aria-label="" aria-describedby="button-addon2" name="addIngredient">
-                    <% ingredients.forEach(function(i, idx) { %>
-                        <option value="<%= i.name %>"><%= i.name %> (<%= i.quantityType %>)</option>
-                        <% }); %>
-                    </select>
-                <button class="btn btn-outline-secondary text-light" type="submit" target="recipeIng" id="button-addon2">Add</button>
-            </form>
-        </div>
-        <div class="row">
-            <div class="container-fluid">
-                <% recipe.ingredients.forEach(function(i, idx){ %>
-                    <% if (idx%2 == 0) { %>
 
-                        <div class="col">
-                            <%= i + ", " %> <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-                            <% if (i.length+1) %> <%= (recipe.ingredients[idx+1]) + ", " %> <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-                        </div>
-                    <% } %>
-            <% }) %>
-            </div>
-        </div>
-    </div>
-    <form action="/recipes/<%= recipe._id %>?_method=PUT" id="" method="POST" class="col">
-    <div class="container recipe-form rounded-4 col">
-        <div class="row">
-            <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
-                <input type="text" class="form-control" name="name" <%= recipe.name %> id="name" value="<%= recipe.name %>"></input>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <label for="diet" class="form-label" id="">Diet Type</label>
-                <select name="diet" class="form-control" id="">
-                    <option value='Omnivore'<% if (recipe.diet === 'Omnivore'){ %> selected <% } %>>Omnivore</option>
-                    <option value='Vegetarian'<% if (recipe.diet === 'Vegetarian'){ %> selected <% } %>>Vegetarian</option>
-                    <option value='Vegan'<% if (recipe.diet === 'Vegan') { %> selected <% } %>>Vegan</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <label for="" class="form-label">Preparation Time</label>
-                <input type="text" class="form-control col" name="preparationTime" value="<%= recipe.preparationTime %>" id="">
-            </div>
-
-        </div>
-        <div class="row text-holder padding-3">
-            <label class="form-label">Directions</label>
+<body class="container vh-100 text-center recipe-bg  px-2 ">
+    <div class="invis-holder row px-2  justify-content-between">
+        <div class="col rounded-4 recipe-form  d-flex justify-content-between flex-column px-2  border m-1 shadow-lg">
+           
             
-            <textarea class="form-control" rows="8" name="directions">
-                <%= recipe.directions %>
-            </textarea>
-        </div>
-        <div class="form-control recipe-form">
-            <input type="submit" class="form-control" value="Submit Recipe">
-        </div>
+            
+            <div class=" d-flex justify-content-between flex-column mx-2 ">
+
+                <div  class="container dark-text light-background rounded-4 w-50 ">Ingredients</div>
+                <div class="container p-2 m-2">
+
+                    <form action="/recipes/<%= recipe._id %>/updateIng?_method=PUT" id="recipeIng2" method="POST" class="container input-group">
+                        <select class="form-select dark-background light-text " aria-label="" aria-describedby="button-addon2" name="addIngredient" class="">
+                            <% ingredients.forEach(function(i, idx) { %>
+                                <option class="dark-background light-text" value="<%= i.name %>"><%= i.name %> (<%= i.quantityType %>)</option>
+                                <% }); %>
+                            </select>
+                            <button class="btn btn-outline-warning dark-text light-background" type="submit" target="recipeIng2" id="button-addon2">Add</button>
+                        </form>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column mx-auto">
+                            <% recipe.ingredients.forEach(function(i, idx){ %>
+                                <% if (idx%2 == 0) { %>
+                                    <div class="row  small-text light-text">
+                                        <%= i %><input class="form-check-input bg-dark small-text mx-1 " type="checkbox" name="<%= i %>" checked>
+                                    </div>
+                                    <% } %>
+                                <% }) %>
+                        </div>
+
+                        <div class="d-flex flex-column mx-auto"></div>
+                        <div class="d-flex flex-column mx-auto">
+                            <% recipe.ingredients.forEach(function(i, idx){ %>
+                                <% if (idx%2 ==1) {%>
+                                    <div class="row small-text light-text ">
+                                        <%= i %> <input class="form-check-input  bg-dark small-text mx-1" type="checkbox" name="<%= i %>" checked>
+                                    </div>
+                                <% } %>
+                            <% })  %>
+                        </div>
+            </div>    
+                                
+            
+            <div class="row mx-2 ">
+            <form action="/recipes/<%= recipe._id %>?_method=PUT" id="" method="POST" class="rounded-4 form-control form-control-sm dark-background">
+                <div class="row justify-content-evenly ">
+
+                    <div class="col-sm-4 p-2">
+                        <label for="diet" class="form-label small-text light-text" id="">Diet Type</label>
+                        <select name="diet" class="form-control form-control-sm input-light small-text rounded-3 light-background dark-text " id="">
+                            <option class="light-background dark-text" value='Omnivore' <% if (recipe.diet === 'Omnivore'){ %> selected <% } %>>Omnivore</option>
+                            <option value='Vegetarian' <% if (recipe.diet === 'Vegetarian'){ %> selected <% } %>>Vegetarian</option>
+                            <option value='Vegan' <% if (recipe.diet === 'Vegan') { %> selected <% } %>>Vegan</option>
+                        </select>
+                    </div>       
+                    <div class="col-sm-4 p-2">
+                        <label for="" class="form-label small-text light-text">Preparation Time</label>
+                        <input type="text" class="form-control form-control-sm small-text rounded-3 light-background dark-text" name="preparationTime" value="<%=recipe.preparationTime%>">
+                    </div>                    
+                </div>
+                    <div class="col-sm-8 mx-auto mb-2">
+                        
+                        <label for="exampleInputEmail1" class="form-label small-text light-text">Recipe Name</label>
+                        <input type="text" class="form-control form-control-sm small-text rounded-3 light-background dark-text" name="name" id="name" value="<%= recipe.name %>">
+                    </div>
+                    
+                </div>
+            </div> 
+           
+         
+
+        <div class="col-sm rounded-4 recipe-form  d-flex justify-content-between flex-column px-2 border m-1 shadow-lg">
+               
+
+                <div class="d-flex flex-column">
+                    <div class="col-sm-12">
+
+                        <label class="form-label light-text">Directions</label>
+                        <textarea class="form-control dark-background light-text" rows="12" name="directions"><%= recipe.directions %></textarea>
+                    </div>
+                </div>
+                <div class="row justify-content-evenly align-middle">
+                    <div class=" col-auto my-auto mt-2 ">
+
+                        <div class="form-control form-control-sm rounded-3 bg-warning bg-opacity-50 border-dark mt-2"> 
+                            
+                            <button type="submit" class="btn form-control rounded-3 light-background dark-text btn-outline-warning">Submit Recipe</button>
+                        </div>
+                    </div>
+                </div>
+    
+        </div>  
     </div>
-  
-</form>  
-</div>
+        </form>
+   
 </body>
 
 

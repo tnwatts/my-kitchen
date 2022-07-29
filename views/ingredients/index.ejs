@@ -7,25 +7,24 @@
   };
 </script>
 
-<body class="container vh-100 text-center text-bg-dark"
+<body class="container  vh-100 text-center text-bg-dark px-5 mb-5"
   style="background: url('https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80'); background-repeat: no-repeat; background-size: cover;"">
 
 <div class=" modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog ">
+    <div class="modal-content border-dark">
+      <div class="modal-header checker-board">
+        <button type="button" class="btn-close border-dark" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body dark-background">
         <form action="/ingredients" method="post" class="">
-          <div class="form-floating mb-3 dark-text">
-            <input type="text" class="form-control rounded-3" name="name" id="floatingInput">
-            <label for="floatingInput">Ingredient Name</label>
+          <div class="form-floating mb-3 light-background dark-text rounded-3">
+            <input type="text" class="form-control rounded-3 light-background dark-text" name="name" id="floatingInput">
+            <label class="rounded-3" for="floatingInput">Ingredient Name</label>
           </div>
+          <label class="light-text" for="floatingInput">Quantity Type</label>
           <div class="form-floating mb-3 dark-text">
-            <label for="floatingInput">Quantity Type</label>
-            <select name="quantityType" class="rounded-3" name="quantityType" id="floatingInput">
+            <select name="quantityType" class=" rounded-3 light-background dark-text" name="quantityType" id="floatingInput">
               <option value='oz'>oz</option>
               <option value='grams'>gram</option>
               <option value='count'>count</option>
@@ -35,19 +34,19 @@
               <option value='gallon'>gallon</option>
             </select>
           </div>
-          <input type="submit" value="Add Ingredient">
+          <button class="btn btn-outline-warning light-background dark-text"type="submit">Add Ingredient</button>
 
         </form>
       </div>
-      <div class="modal-footer rounded-4">
+      <div class="modal-footer rounded-4 checker-board">
       </div>
     </div>
   </div>
   </div>
 
-  <div class="container text-light rounded-4 lifted i-table">
+  <div class="container text-light rounded-4 lifted i-table p-5 my-5">
     <h2 class="dark-text rounded-4">My Ingredients</h2>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-light btn-outline-warning dark-background light-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Submit New Ingredient
     </button>
     <div class="table-responsive" max-width="50">
@@ -67,17 +66,17 @@
             <td><%= i.quantityType %></td>
             <td>
               <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="">
-                <div class="input-group mb-1">
-                  <input name="qty" class="form-control form-control-sm" type="number" placeholder="<%= i.users.find(u => u.id).qty %>" aria-describedby="button-addon2">
+                <div class="input-group mb-1 ">
+                  <input name="qty" class="form-control form-control-sm light-background dark-text" type="number" placeholder="<%= i.users.find(u => u.id).qty %>" aria-describedby="">
                 </input>
-                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Update</button>
+                  <button class="btn dark-background btn-outline-warning light-text" type="submit" id="button-addon2 ">Update</button>
                 </div>
               </form>
             </td>
             <td>
               <form action="/userIngredients/<%=  i.users.find(u => u.id)._id %>?_method=DELETE" id=""
                 method="POST" class="">
-                <button class="btn" type="submit" id="">Delete</button>
+                <button class="btn dark-background btn-outline-warning light-text" type="submit" id="">Delete</button>
               </form>
             </td>
           </tr>
@@ -87,17 +86,18 @@
       </table>
       <form action="" id="selectIng" method="post" class="">
         <div class="input-group mb-3">
-          <select class="form-select" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
-            <option selected>Select Ingredients</option>
+          <select class="form-select dark-background light-text" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
+            <option class="btn-outline-warning" selected>Select Ingredients</option>
             <% ingredients.forEach(function(i, idx) { %>
             <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
             <% }); %>
           </select>
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+          <button class="btn btn-light btn-outline-warning dark-text" type="submit" id="button-addon2">Add</button>
         </div>
       </form>
     </div>
   </div>
+  <div class="container footer partials bg-opacity-100 small-text">T</div>
 </body>
 
 <%- include('../partials/footer') %>

@@ -40,6 +40,13 @@ function edit(req, res) {
 function update(req, res) {
     Recipe.findOne({'_id': req.params.id, 'users': req.user._id}, function(err, recipe){
         if (!recipe.user.equals(req.user._id)) return res.redirect(`/ingredients`);
+        recipe.ingredients.forEach(i => {
+            
+        });
+        recipe.ingredients.forEach(function(i, idx){
+            if (req.body[i]) return;
+            recipe.ingredients.splice(idx, 1);
+        })
         recipe.directions = req.body.directions;
         recipe.preparationTime = req.body.preparationTime;
         recipe.name = req.body.name;
@@ -52,14 +59,16 @@ function update(req, res) {
 
 function updateIngredients(req, res) {
     Recipe.findOne({'_id': req.params.id, 'users': req.user._id}, function(err, recipe){
+        console.log(recipe)
         if (err) console.log(err) //console.log(req.body.addIngredient);
         if (!recipe.user.equals(req.user._id)){
-            console.log(reciper.user);
-            console.log(req.user._id);
             
             return res.redirect("/");
+            
         }
-
+        recipe.ingredients.forEach(function(i){
+            if (i === req.body.addIngredient) req.body.addIngredient = null;
+        })
         if (req.body.addIngredient) recipe.ingredients.push(req.body.addIngredient);
         recipe.save(function(err) {
           res.redirect(`/recipes/${recipe._id}/edit`);

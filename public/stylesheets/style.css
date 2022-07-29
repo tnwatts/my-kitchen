@@ -1,12 +1,30 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" );
 
 .dark-text {
-	color: black;
-	text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.755);
+	color: rgb(70, 37, 6);
+	text-shadow: 2px 2px 2px rgba(252, 207, 118, 0.66);
+	font-weight: 900;
+	font-family: 'BioRhyme';
+}
+
+.light-text {
+	color: rgb(243, 212, 183);
+	text-shadow: 2px 2px 2px rgba(50, 38, 12, 0.66);
+	font-weight: 900;
+	font-family: 'BioRhyme';
+}
+
+.small-text{
+	font-size: 2vmin;
 }
 
 .title {
 	margin: 2vmin;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color:  rgb(70, 37, 6);
+	opacity: 1; 
 }
 
 .welcome-box {
@@ -34,12 +52,18 @@
 	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
   }
 
-
+.dark-background {
+	background-color: #40240ccd;
+}
+.light-background {
+	background-color: #d9cbbeeb;
+}
 .recipe-form{
-	background-color: #7f644dcd;
+	background-image: linear-gradient(to bottom right, #ad957ff9, #7f644df2, #301a07e6);
+	padding: 2%;
 }
 .invis-holder {
-	padding: 8%;
+	padding: 4%;
 }
 
 .text-holder {
@@ -47,8 +71,8 @@
 }
 
 .partials {
-	margin: 5px;
-	background-color:rgba(255, 255, 255, 0.84);
+	/* margin: 5px; */
+	background-color:rgb(255, 216, 181);
 }
 
 .lifted {
@@ -62,4 +86,30 @@ td {
 .i-table{
 	margin-top: 5%;
 	background-color: #d5c4a6f5;
+}
+
+.recipe-bg {
+	background: url("https://images.unsplash.com/photo-1627907228175-2bf846a303b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+}
+
+.highlight{
+	background-image: radial-gradient(circle, #484C2B, #F37365);
+}
+
+.checker-board{
+	background-image: linear-gradient(45deg, #a01515 25%, transparent 25%), linear-gradient(-45deg, #744e2bf9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #a32222 75%), linear-gradient(-45deg, transparent 75%, #744e2bf9 75%);
+	background-size: 21px 20px;
+	background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.light-background-2 {
+	background-color: #dac7b7c0;
+}
+
+.border {
+	border-radius: 10px;
+}
+
+.footer {
+	max-height: 8%;
 }
