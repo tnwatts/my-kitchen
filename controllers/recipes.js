@@ -103,17 +103,13 @@ async function available(req, res, next) {
         await recipes.forEach(function(r, idx){
             storeIngArr.push(r.ingredients);
         })
-        // console.log("I MADE A LIST OF RECIPE ingredients arrays", storeIngArr)
-        // console.log("I MADE A LIST OF USER ingredients arrays", ingredientsNames)
         await recipes.forEach(function(r, idx){
             const containsAll = r.ingredients.every(element => {
-                // console.log(element);
                 return ingredientsNames.includes(element);
             })
             if (containsAll) {
                 availableRec.push(r);
             }
-
         });
         console.log(availableRec);
         if (availableRec.length > 0) {
