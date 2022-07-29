@@ -25,6 +25,8 @@ RECIPES
 # Getting Started
 Just log in with google and you can start entering your ingredients
 
+[My Kitchen Helper Aide](https://my-kitchen-helper-aid.herokuapp.com/recipes)
+
 # Next Steps
 
 - Next versions will have
