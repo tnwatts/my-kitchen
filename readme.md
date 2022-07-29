@@ -23,9 +23,16 @@ EDITING A RECIPE
 - HTML
 - CSS
 - GOOGLE
+- NODE JS
+- EXPRESS
+- GOOGLE OAUTH STRATEGIES
+- BOOTSTRAP
 
 # Getting Started
-Just log in with google and you can start entering your ingredients
+Just log in with google and you can start entering your ingredients. 
+Write recipes with the ingredients you enter.
+Search for which recipes you are able to cook with your current ingredient stock.
+Have fun.
 
 [My Kitchen Helper Aide](https://my-kitchen-helper-aid.herokuapp.com/recipes)
 
