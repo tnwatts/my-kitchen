@@ -34,7 +34,7 @@ Write recipes with the ingredients you enter.
 Search for which recipes you are able to cook with your current ingredient stock.
 Have fun.
 
-[My Kitchen Helper Aide](https://my-kitchen-helper-aid.herokuapp.com/recipes)
+[My Kitchen Helper Aide](https://my-kitchen-helper-aid.herokuapp.com)
 
 # Next Steps
 
