@@ -35,7 +35,6 @@
             </select>
           </div>
           <button class="btn btn-outline-warning light-background dark-text"type="submit">Add Ingredient</button>
-
         </form>
       </div>
       <div class="modal-footer rounded-4 checker-board">
@@ -46,11 +45,25 @@
 
   <div class="container text-light rounded-4 lifted i-table px-5 py-2 my-4">
     <h2 class="dark-text rounded-4">My Ingredients</h2>
-    <button type="button" class="btn btn-light btn-outline-warning dark-background light-text mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Submit New Ingredient
-    </button>
-    <div class="table-responsive mx-2 p-2" max-width="45">
-      <table class="table table-striped dark-text table-sm mt-2 p2">
+    <div class="row justify-content-evenly aling-items-center">
+
+      <button type="button" class="col-sm-3 btn btm-sm btn-light btn-outline-warning dark-background light-text mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Submit New Ingredient
+      </button>
+      <form action="" id="selectIng" method="post" class="col-lg-6 mt-2">
+        <div class="input-group mb-3 " >
+          <select class=" form-select dark-background light-text" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
+            <option class="btn-outline-warning" selected>Select Ingredients</option>
+            <% ingredients.forEach(function(i, idx) { %>
+              <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
+              <% }); %>
+            </select>
+            <button class="btn btn-outline bg-light btn-outline-warning dark-text " type="submit" id="button-addon2">Add</button>
+          </div>
+        </form>
+      </div>
+    <div class="table-responsive table-sm" max-width="45">
+      <table class="table table-striped dark-text table-sm ">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -65,7 +78,7 @@
             <td><%= i.name %></td>
             <td><%= i.quantityType %></td>
             <td>
-              <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="mb-2 pt-1">
+              <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="">
                 <div class="input-group mb-1">
                   <input name="qty" class="form-control form-control-sm light-background dark-text" type="number" placeholder="<%= i.users.find(u => u.id).qty %>" aria-describedby="">
                 </input>
@@ -84,17 +97,7 @@
 
         </tbody>
       </table>
-      <form action="" id="selectIng" method="post" class="">
-        <div class="input-group mb-3">
-          <select class="form-select dark-background light-text" aria-label="Default select example" aria-describedby="button-addon2" onchange="changeAction(this.value)">
-            <option class="btn-outline-warning" selected>Select Ingredients</option>
-            <% ingredients.forEach(function(i, idx) { %>
-            <option value="<%= i._id %>"><%= i.name %> (<%= i.quantityType %>)</option>
-            <% }); %>
-          </select>
-          <button class="btn btn-light btn-outline-warning dark-text" type="submit" id="button-addon2">Add</button>
-        </div>
-      </form>
+      
     </div>
   </div>
   <div class="container footer partials bg-opacity-100 small-text">T</div>
