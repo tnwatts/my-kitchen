@@ -5,16 +5,18 @@ My Kitchen Aide Helper is a revolutionary breakthroug in kitchen aide tecnology.
 # Screenshot
 
 LANDING PAGE
-<img src="https://imgur.com/El0v1lV">
-
+<img src="https://i.imgur.com/El0v1lV.png">
 
 INGREDIENTS
-<img src="https://imgur.com/PkGQ4J5">
+<img src="https://i.imgur.com/PkGQ4J5.png">
 
 
 RECIPES
-<img src="https://imgur.com/mKr14ie">
-<img srtc="https://imgur.com/8dm0fXs">
+<img src="https://i.imgur.com/mKr14ie.png">
+
+EDITING A RECIPE
+<img srtc="https://i.imgur.com/8dm0fXs.png">
+
 # Technologies Used
 
 - JavaScript
