@@ -2,13 +2,13 @@
 
 <body class="container vh-100 text-center recipe-bg  px-2 ">
     <div class="invis-holder row px-2  justify-content-between">
-        <div class="col rounded-4 recipe-form  d-flex justify-content-between flex-column px-2  border m-1 shadow-lg">
+        <div class="col rounded-4 recipe-form  d-flex  justify-content-between flex-column px-2  border border-light m-1 lifted ">
            
             
             
             <div class=" d-flex justify-content-between flex-column mx-2 ">
 
-                <div  class="container dark-text light-background rounded-4 w-50 ">Ingredients</div>
+                <div  class="container dark-text light-background rounded-4 lifted w-50 ">Ingredients</div>
                 <div class="container p-2 m-2">
 
                     <form action="/recipes/<%= recipe._id %>/updateIng?_method=PUT" id="recipeIng2" method="POST" class="container input-group">
@@ -74,7 +74,7 @@
            
          
 
-        <div class="col-sm rounded-4 recipe-form  d-flex justify-content-between flex-column px-2 border m-1 shadow-lg">
+        <div class="col-sm rounded-4 recipe-form  d-flex justify-content-between flex-column px-2 border m-1 lifted">
                
 
                 <div class="d-flex flex-column">
@@ -87,9 +87,9 @@
                 <div class="row justify-content-evenly align-middle">
                     <div class=" col-auto my-auto mt-2 ">
 
-                        <div class="form-control form-control-sm rounded-3 bg-warning bg-opacity-50 border-dark mt-2"> 
+                        <div class="form-control form-control-sm rounded-3 bg-warning bg-opacity-50 lifted border-dark mt-2"> 
                             
-                            <button type="submit" class="btn form-control rounded-3 light-background dark-text btn-outline-warning">Submit Recipe</button>
+                            <button type="submit" class="btn form-control rounded-3 light-background dark-text  btn-outline-warning">Submit Recipe</button>
                         </div>
                     </div>
                 </div>

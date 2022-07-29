@@ -7,7 +7,8 @@ module.exports = {
     edit,
     show,
     update,
-    updateIngredients
+    updateIngredients,
+    available
 }
 
 function index(req, res) {    
@@ -82,4 +83,57 @@ function show(req, res) {
         if (err) console.log("err");
         res.render(`recipes/show` , {recipe});
     }) 
+}
+
+async function available(req, res, next) {
+    try {
+        console.log("I MADE IT TO THE CONTROLLER")
+        let availableRec = [];
+        storeIngArr = [];
+        const userIngredients = await Ingredient.find( {users:{$elemMatch:{userId : req.user._id}}})
+        if(!userIngredients) throw new Error("uhoh");
+        console.log("I FOUND ALL THE INGREDIENTS", userIngredients);
+        const recipes = await Recipe.find({});
+        console.log("I FOUND ALL THE RECIPES", recipes);
+        let ingredientsNames = [];
+        userIngredients.forEach(function(i){   //create array of strings for comparison 
+            ingredientsNames.push(i.name);
+        })
+        console.log("I MADE AN ARRAY OF INGREDIENTS NAMES", ingredientsNames);
+        recipes.forEach(function(r, idx){
+            r.forEach(function(i){
+                storeIngArr[idx].push(i);
+            })
+        })
+        console.log("I MADE A LIST OF ingredients arrays", storeIngArr)
+        recipes.forEach(function(r, idx){
+            const containsAll = ingredientsNames.every(element => {
+                return r.ingredients.includes(element);
+            })
+            if (containsAll) availableRec.push(r);
+        });
+        if (availableRec.length > 0) {
+            console.log("I AM DOING THE IF THING");
+            res.render('recipes/showAvailable', {availableRec});
+        } else {
+            console.log("I AM DOING THE ELSE THING");
+            res.redirect('/recipes');
+        }
+    } catch (err) {
+      return next(err); 
+    }
+}
+
+
+
+async function deleteIngredient(req, res, next) {
+    try {
+      const ingredient = await Ingredient.findOne({'users._id': req.params.id, 'users.userId': req.user._id});
+      if (!ingredient) throw new Error('Nice Try!');
+      ingredient.users.remove(req.params.id);
+      await ingredient.save();
+      res.redirect(`/ingredients`);
+    } catch (err) {
+      return next(err);
+    }
 }

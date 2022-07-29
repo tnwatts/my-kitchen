@@ -1,2 +1,54 @@
     <%- include('../partials/header') %>
+
+
+    <body class="container vh-100 text-center show-time  px-2 ">
+        <div class="invis-holder row px-4 shadow-lg justify-content-center">
+            <div class="col-sm-9 rounded-4 light-background-2 checker-board shadow-lg d-flex justify-content-center align-items-center flex-column px-2  border border-dark m-1 shadow-lg">
+                <h2 class=" col-sm-4 rounded-3 dark-background light-text border border-dark justify-content-evenly  mx-auto my-3"><%= recipe.name %></h2>
+                
+                
+                
+                <div class="d-flex flex-row rounded-3 justify-content-around align-items-center mx-5 my-2 border border-dark  dark-background light-text">
+                    <div class="container-fluid rounded-3 m-3 border border-dark bg-light  dark-text">This recipe is for <%= recipe.diet+"s" %>. It takes approximately <%= recipe.preparationTime+"s" %> to prepare.</div>
+                </p>
+                <div class="container-fluid m-3 border border-dark rounded-3 bg-light dark-text"> The Ingredients are: 
+                    <div class="dark-text p-2 rounded-3 ">
+                        <% recipe.ingredients.forEach(function(i, idx){ %>
+                            <%= i  %>, 
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>    
+        
+    
+                <label class="light-background dark-text border border-dark mx-3 p-2">Directions</label>
+                        <div class="col-sm-10 bg-light dark-text border border-dark rounded-3 p-2 m-3"><%= recipe.directions %>
+                        </div>
+                
+                
+                
+                
+                
+                
+                                            
+                                        
+    
+                                    
+              
+    
+                       
+               
+        
+            </div>  
+        </div>
+    </div>      
+       
+    </body>
+    
+    
+
+
+
+
+
     <%- include('../partials/footer') %>

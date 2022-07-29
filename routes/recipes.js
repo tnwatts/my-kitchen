@@ -3,6 +3,8 @@ var router = express.Router();
 const recipesCtrl = require('../controllers/recipes');
 
 
+router.get('/recipes/available', recipesCtrl.available);
+// router.get('/recipes/showAvailable', recipesCtrl.showAvailable)
 router.get('/recipes', recipesCtrl.index);
 router.post('/recipes', recipesCtrl.create);
 router.get('/recipes/:id', recipesCtrl.show);

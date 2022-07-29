@@ -14,7 +14,7 @@
   <div class="modal-dialog ">
     <div class="modal-content border-dark">
       <div class="modal-header checker-board">
-        <button type="button" class="btn-close border-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close border-dark light-background-2 " data-bs-dismiss="modal" aria-label=""></button>
       </div>
       <div class="modal-body dark-background">
         <form action="/ingredients" method="post" class="">
@@ -44,13 +44,13 @@
   </div>
   </div>
 
-  <div class="container text-light rounded-4 lifted i-table p-5 my-5">
+  <div class="container text-light rounded-4 lifted i-table px-5 py-2 my-4">
     <h2 class="dark-text rounded-4">My Ingredients</h2>
-    <button type="button" class="btn btn-light btn-outline-warning dark-background light-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-light btn-outline-warning dark-background light-text mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Submit New Ingredient
     </button>
-    <div class="table-responsive" max-width="50">
-      <table class="table table-striped dark-text table-sm">
+    <div class="table-responsive mx-2 p-2" max-width="45">
+      <table class="table table-striped dark-text table-sm mt-2 p2">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -65,8 +65,8 @@
             <td><%= i.name %></td>
             <td><%= i.quantityType %></td>
             <td>
-              <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="">
-                <div class="input-group mb-1 ">
+              <form action="/userIngredients/<%= i.users.find(u => u.id)._id %>?_method=PUT" id="" method="POST" class="mb-2 pt-1">
+                <div class="input-group mb-1">
                   <input name="qty" class="form-control form-control-sm light-background dark-text" type="number" placeholder="<%= i.users.find(u => u.id).qty %>" aria-describedby="">
                 </input>
                   <button class="btn dark-background btn-outline-warning light-text" type="submit" id="button-addon2 ">Update</button>

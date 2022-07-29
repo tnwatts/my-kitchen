@@ -2,17 +2,19 @@
 
 .dark-text {
 	color: rgb(70, 37, 6);
-	text-shadow: 2px 2px 2px rgba(252, 207, 118, 0.66);
+	/* text-shadow: 2px 2px 2px rgba(252, 207, 118, 0.66); */
+	text-shadow: 1px 1px 0px #7bac3a;
 	font-weight: 900;
 	font-family: 'BioRhyme';
 }
 
 .light-text {
-	color: rgb(243, 212, 183);
-	text-shadow: 2px 2px 2px rgba(50, 38, 12, 0.66);
+	color:   rgb(243, 212, 183);
+	text-shadow: 3px 3px 3px #273f08;
 	font-weight: 900;
 	font-family: 'BioRhyme';
 }
+
 
 .small-text{
 	font-size: 2vmin;
@@ -31,7 +33,7 @@
 	border-radius: 10px;
 	text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.574);
 	background-color: #25140698;
-	background-image: linear-gradient(315deg, #8a6241b9 0%,#434a42d5 74%);
+	background-image: linear-gradient(315deg, #804b20d5 20%,#537e1be9 50%, #f4d52ae4 90% );
 	box-shadow: 5px 5px 7px rgba(47, 8, 8, 0.668);
 	max-width: 500px;
 	padding: 3vmin;
@@ -53,10 +55,10 @@
   }
 
 .dark-background {
-	background-color: #40240ccd;
+	background-color: #40240cd7;
 }
 .light-background {
-	background-color: #d9cbbeeb;
+	background-color: #d9cbbeea;
 }
 .recipe-form{
 	background-image: linear-gradient(to bottom right, #ad957ff9, #7f644df2, #301a07e6);
@@ -72,7 +74,8 @@
 
 .partials {
 	/* margin: 5px; */
-	background-color:rgb(255, 216, 181);
+	/* background-color:rgb(255, 216, 181); */
+	background-color:#dfd287e4;
 }
 
 .lifted {
@@ -92,24 +95,53 @@ td {
 	background: url("https://images.unsplash.com/photo-1627907228175-2bf846a303b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
 }
 
+.show-time {
+	background: url("https://cdn.stocksnap.io/img-thumbs/960w/house-home_SG5BA6JI8V.jpg");
+}
+
+.recipe-show {
+	background-color: linear-gradient(to bottom right, #889eaef5, #d4ebc3ea, #101c28);
+	padding: 2%;
+	margin: 2%;
+}
+
 .highlight{
 	background-image: radial-gradient(circle, #484C2B, #F37365);
 }
 
 .checker-board{
-	background-image: linear-gradient(45deg, #a01515 25%, transparent 25%), linear-gradient(-45deg, #744e2bf9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #a32222 75%), linear-gradient(-45deg, transparent 75%, #744e2bf9 75%);
+	background-image: linear-gradient(45deg, #a01515 25%, transparent 25%), linear-gradient(-45deg, #537e1b 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #a32222 75%), linear-gradient(-45deg, transparent 75%, #537e1b 75%);
 	background-size: 21px 20px;
 	background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 .light-background-2 {
-	background-color: #dac7b7c0;
+	background-color: #d4c3b3e6;
 }
 
 .border {
 	border-radius: 10px;
+	border: 5px solid rgb(47, 3, 3);
 }
 
 .footer {
 	max-height: 8%;
 }
+
+input[type=text] {
+	transition: width 0.4s ease-in-out;
+  }
+
+  input[type=text]:focus, input[type=select]:focus, input[type=number]:focus {
+	border: 2px, solid,  #e9a03af0;
+	/* width: 100%; */
+	background-color:  #dac7b7c0 ;
+  }
+
+  text:focus {
+	background-color:  #dac7b7c0 ;
+  }
+
+  .focusing:focus {
+	border: 2px, solid,  #e9a03af0;
+  }
